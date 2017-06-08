@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<div class="mainContainer">
+
+    <div class="navContainer">
+        <div class="navContainer_child">
+            <div class="filler"></div>
+            <div class="navContainer_grandchild1">
+                <img id="logoimage" src="./media/logo_synomus4_bol.svg" style="height:25px;cursor:move" ng-click="vm.toggleFullScreen()"/>
+                <h5 id="mytitle" class="navHeading"><a href="https://www.synomus.nl">{{vm.title}}</a></h5>
+                <div class="filler"></div>
+                <nav class="navList">
+                    <ul>
+                        <li><div ng-include="'./views/login.html'"></div></li>
+
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="filler"></div>
+            <div class="navContainer_grandchild2">
+                <form ng-submit="vm.userInputHasChanged?vm.submitForm():vm.restore()">
+                    <div class="input-group add-on" >
+                        <div class="input-group-btn">
+                            <button  class="btn btn-default" type="button" ng-click="vm.erase()"><i
+                                class="glyphicon glyphicon-erase"></i>
+                            </button>
+                        </div>
+                        <input id="userinput" class="form-control" ng-model="vm.userInput" name="srch-term" 
+                        type="text" placeholder="plak hier uw tekst" autocomplete="off"/>
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="filler"></div>
+        </div>
+    </div>
+    <div class="centerContainer">
+    <div class="centerFlexContainer">
+        <div class="filler"></div>
+        <div id="leftContainer" class="textContainer leftContainer" ng-class="{leftContainerCollapsed:!vm.showOriginalText ,leftContainer:vm.showOriginalText, leftContainerFull:vm.showOriginalText}">
+            <div class="iconContainer">
+                    <span  class="fa-stack fa-2x">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-clipboard fa-1x iconCorrection"></i>
+                    </span>
+                    <span id="btn_toggle" ng-click="vm.showOriginalText = !vm.showOriginalText;" class="fa-stack fa-2x btn_orig_plus" >
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-toggle-right fa-stack-1x "></i>
+                    </span>
+                     <div class="filler"></div>
+                <h6  >origineel</h6>
+                <div class="filler"></div>
+            </div>
+            <div  class="textWindow originalTextWindow" >
+            <div id="originalTextWindow"><!--
+                --><span ng-repeat="(key,item) in vm.wordModel track by $index"><!--
+                    --><original-text class="wordModelContainer"></original-text><!--
+                --></span>
+            </div>
+    </div>
+        </div>
+        <div class="filler"></div>
+
+        <div id="rightContainer" class="textContainer rightContainer" ng-class="{rightContainer:vm.showOriginalText ,rightContainerFull:!vm.showOriginalText, rightContainerCollapsed:vm.showOriginalText}">
+            
+            <div class="iconContainer">
+                    <span  class="fa-stack fa-2x" >
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-clipboard fa-1x iconCorrection"></i>
+                    </span>
+                    <span  class="fa-stack fa-2x">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-home fa-1x iconCorrection"></i>
+                    </span>
+                    
+                    <span  class="fa-stack fa-2x">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-envelope fa-1x iconCorrection"></i>
+                    </span>
+
+                     <span ng-show="vm.showOriginalText" ng-click="vm.showOriginalText = !vm.showOriginalText;" class="fa-stack fa-2x">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-toggle-left fa-1x iconCorrection"></i>
+                    </span>
+                    <span ng-show="!vm.showOriginalText" ng-click="vm.showOriginalText = !vm.showOriginalText;" class="fa-stack fa-2x">
+                        <i class="fa fa-square-o fa-stack-2x"></i>
+                        <i class="fa fa-toggle-right fa-1x iconCorrection"></i>
+                    </span>
+                <div class="filler"></div>
+                <h6 style="background: #F1F1F1 url('./media/cheap_diagonal_fabric.png');" >editor</h6>
+                <div class="filler"></div>
+                <span id="change1_button"   class="fa-stack fa-2x  green">
+                        <i class="fa fa-square-o fa-stack-2x  green"></i>
+                        <i class="fa fa-magic fa-stack-1x  green"></i>
+                    </span>
+                    <span id="change2_button"  class="fa-stack fa-2x  orange">
+                    <i class="fa fa-square-o fa-stack-2x orange"></i>
+                    <i class="fa fa-magic fa-stack-1x orange"></i>
+                </span>
+                <span id="change3_button"   class="fa-stack fa-2x  red">
+                    <i class="fa fa-square-o fa-stack-2x red"></i>
+                    <i class="fa fa-magic fa-stack-1x red"></i>
+                </span>
+            </div>
+
+            <div id = "myEditorwindow" class="textWindow editorWindow">
+            <div id="editorWindow">
+                <span ng-repeat="(key,item) in vm.wordModel track by $index">
+                    <editor-text class="wordModelContainer" ></editor-text>
+                </span>
+            </div>
+            </div>
+    </div>
+        <div class="filler"></div>
+    </div>
+    </div>    
+
+    <div id="loadingBarContainer1"></div>
+    <div class="statusWindow">
+        
+    </div>
+</div>

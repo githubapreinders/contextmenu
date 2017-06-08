@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<span id="myOriginalWord{{$index}}" contenteditable="false"
+ng-model="item.originalword"
+ng-class="item.currentword !== item.originalword?'originalWord_underlined':'wordModel'" >{{item.originalword}}</span>
+
+<span ng-class="item.suffix !== item.originalsuffix?'wordModel_suffix_underlined':'wordModel_suffix'" id="myOriginalSuffix{{$index}}" contenteditable="false"
+ng-model="item.originalsuffix" >{{item.originalsuffix}}</span>
+

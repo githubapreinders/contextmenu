@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<div id = "contextMenu{{$index}}"  class="myContextMenu">
+<div id = "contextMenuBefore{{$index}}" class="myContextMenuBefore"></div>	
+	<ul id="contextMenuUl{{$index}}">
+        
+                <li ng-repeat="(key,item) in item.synonyms track by $index" >
+                    <span id="contextMenuSPAN1{{$index}}">{{item}}</span>
+                </li>
+            
+        <li id="contextMenuLI2{{$index}}">
+            <span id="contextMenuSP2{{$index}}" ng-click="rhymewordsIsClicked =!rhymewordsIsClicked;">rhymeword({{item.rhymewords.length}})</span>
+            <ul id="contextMenuUl2{{$index}}" ng-show="rhymewordsIsClicked == true;">
+                <li  ng-repeat="rhymeword in vm.wordModel[$index].rhymewords" >
+                    <span id="contextMenuSPAN2{{$index}}">{{rhymeword}}</span>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+{
+  "name": "template1",
+  "authors": [
+    "apreinders <apreinders74@gmail.com>"
+  ],
+  "description": "a template for bootstrapped and angular web apps, containing all the dependencies to start coding quickly",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "template",
+    "angular",
+    "bootstrap",
+    "gulp"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.apstraction.nl",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "ui-bootstrap": "~1.2.1",
+    "angular-ui-router": "ui-router#~0.2.18"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
+  }
+}

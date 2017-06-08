@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<div id = "contextMenu{{$index}}"  class="myContextMenu">
+<div id = "contextMenuBefore{{$index}}" class="myContextMenuBefore"></div>	
+	<div id="contextMenuContentArea{{$index}}" class=" contextMenuContentArea">
+        <ul>
+            <li id=contextMenuContentSyn{{$index}} ng-show = "vm.contentItems['synonyms'] == true;" ng-repeat="synonym in item.synonyms track by $index" >
+                    <span id="contextMenuSynonyms{{$index}}" ng-click="vm.showSynonym($index,$parent.$index)">{{synonym}}</span>
+            </li>
+            <li id=contextMenuContentRhy{{$index}} ng-show = "vm.contentItems['rhymewords'] == true;" ng-repeat="rhymeword in vm.wordModel[$index].rhymewords track by $index" >
+                    <span id="contextMenuRhymewords{{$index}}" ng-click="vm.showRhymeWord($index,$parent.$index)">{{rhymeword}}</span>
+                </li>
+            <li id=contextMenuContentDes{{$index}} ng-show = "vm.contentItems['description'] == true;" ng-repeat="description in vm.wordModel[$index].description track by $index">  <span id="contextMenuDescription{{$index}}" ng-click="vm.showDescription($index,$parent.$index)">{{description}}</span></li>        
+        </ul>
+    </div>
+    <div id="contextMenuMenuArea{{$index}}" class=" contextMenuMenuArea">
+        <ul>
+            <li id=contextMenuMenuSyn{{$index}} ng-show = "vm.contentItems['synonyms']== false;" ng-click="vm.showCmContent('synonyms', $index)">Synodnyms</li>
+            <li id=contextMenuMenuRhy{{$index}} ng-show = "vm.contentItems['rhymewords']== false;" ng-click="vm.showCmContent('rhymewords', $index)">Rhymewords</li>
+            <li id=contextMenuMenuDes{{$index}} ng-show = "vm.contentItems['description']== false;" ng-click="vm.showCmContent('description', $index)">Description</li>
+            <li id=contextMenuMenuOri{{$index}} ng-click="vm.showCmContent('restore', $index)">{{item.originalword}}</li>
+        </ul>
+    </div>
+    <div id = "contextMenuAfter{{$index}}" class="myContextMenuAfter"></div>
+</div>

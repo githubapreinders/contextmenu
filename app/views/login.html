@@ -1,0 +1,18 @@
+
+
+<div class="loginfield" >
+<input style="padding:5px;" ng-show = "vm.user === null;" ng-model="vm.useremail" type="text" class="form-control input-sm" name="useremail" placeholder="e-mailadres" value="test"/>
+
+<input style="padding:5px;" ng-show = "vm.user === null;" type="password" ng-model="vm.password" class="form-control input-sm" name="password" placeholder="wachtwoord" value="test"/>
+
+<span class="loginText" ng-show = "vm.user !== null;">{{vm.user.name}}</span>
+ <span class="fa-stack fa-lg  loginIcons" ng-show="vm.user === null;" ng-click="vm.login(vm.useremail, vm.password)" >
+                        <i class="fa fa-square-o fa-stack-2x "></i>
+                        <i class="fa fa-sign-in fa-stack-1x "></i>
+                    </span>
+
+ <span class="fa-stack fa-lg loginIcons" ng-show="vm.user !== null;" ng-click="vm.logout()" >
+                       <i class="fa fa-square-o fa-stack-2x "></i>
+                        <i class="fa fa-sign-out fa-stack-1x fa-flip-horizontal"></i>
+                    </span> 
+ </div>                                     

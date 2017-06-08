@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Droid+Sans|Muli|Dosis|Exo+2|Cuprum|Play|Audiowide');
+
+$roboto-slab: "Roboto Slab" , serif;
+$droid-sans: "Droid Sans , sans-serif";
+$muli: "Muli, sans-serif";
+$dosis: "Dosis, sans-serif";
+
+$mainWindowFont: muli;
+$mainFontSize : 15px;
+$breakpoint-tablet: 768px;
+$breakpoint-phone:480px;
+
+$anchorColor: #ffffff;
+$contentGradient: linear-gradient(45deg, #E9F0F2, #E4F1F5);
+$bottomGradient:     linear-gradient(135deg, #28044D, #0D0224);
+$loadingBarGradient: linear-gradient(90deg,#699ef4, #508ff4);
+$buttoncolor: green;
+
+
+
+$corkColor1:#666666;
+$corkColor2:#996666;
+
+
+/* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+.navContainer
+  {
+    padding:1px;
+    height:20%;
+    box-shadow: 0px 2px 2px #888888;
+    .navContainer_grandchild1 ul
+      {
+        padding:0px;
+      }
+  }
+  .statusWindow{display:none;}
+  .mainContainer{padding:0px 0px 0px 0px;}
+  .centerContainer .centerFlexContainer .textContainer .iconContainer {margin:0px;height:13%;}
+  .navList
+  {
+    font-size:80%;
+  }
+  #mytitle,#logoimage
+  {
+    display:none;
+  }
+
+   .centerContainer
+  {
+    height:80%;
+  .centerFlexContainer
+  {
+  margin-left:5px;
+    .textContainer
+    {
+     .iconContainer
+     {
+      .btn_orig_minus{visibility:visible;}
+      .btn_orig_plus{visibility:visible;}
+     }
+    }
+    .textContainer.leftContainerCollapsed
+    {
+      width:0%;
+      transition: width 0.2s;
+    }
+    .textContainer.rightContainerCollapsed
+    {
+      width:0%;
+      transition: width 0.2s;
+    }
+    .textContainer.leftContainerFull
+    {
+      width:100%;
+      transition: width 0.2s;
+    }
+    .textContainer.rightContainerFull
+    {
+      width:100%;
+      transition: width 0.2s;
+    }
+   }
+  }
+}
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) 
+  {
+  .navContainer
+  {
+    padding:1px;
+    height:30%;
+    box-shadow: 0px 2px 2px #888888;
+  }
+   .mainContainer{padding:0px 0px 0px 0px;}
+  .centerContainer .centerFlexContainer .textContainer .iconContainer {margin:0px;height:23%;}
+  .navList
+  {
+    font-size:80%;
+  }
+
+}
+
+
+
+
+/*
+@media (max-width:$breakpoint-tablet)
+{
+  .navContainer
+  { 
+    height:20%;
+    box-shadow: 0px 2px 2px #888888;
+    order:1;
+  }
+  #loadingBarContainer1
+  {
+    order:2;
+  }
+  .statusWindow
+  {
+    order:4;
+  }
+  .centerContainer
+  {
+    height:76%;
+    order:3;
+  .centerFlexContainer
+  {
+  margin-left:5px;
+    .textContainer
+    {
+     .iconContainer
+     {
+      .btn_orig_minus{visibility:visible;}
+      .btn_orig_plus{visibility:visible;}
+     }
+    }
+    .textContainer.leftContainerCollapsed
+    {
+      width:0%;
+      transition: width 0.2s;
+    }
+    .textContainer.rightContainerCollapsed
+    {
+      width:0%;
+      transition: width 0.2s;
+    }
+    .textContainer.leftContainerFull
+    {
+      width:98%;
+      transition: width 0.2s;
+    }
+    .textContainer.rightContainerFull
+    {
+      width:98%;
+      transition: width 0.2s;
+    }
+   }
+  }
+}*/
