@@ -1,6 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Droid+Sans|Muli|Dosis|Exo+2|Cuprum|Play|Audiowide");
+/* ----------- Laptop Non-Retina Screens ----------- */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
+  .iconContainer span {
+    font-size: 350%; }
+  .iconContainer h6 {
+    margin-top: 30px; }
+  .centerContainer .centerFlexContainer .textContainer h6 {
+    font-size: 25px; }
+  .wordModel, .wordModel_underlined {
+    font-size: 30px; }
+  .navContainer #logoimage {
+    height: 65px; }
+  .navContainer .loginfield input {
+    height: 45px;
+    width: 300px;
+    font-size: 25px; }
+  .navContainer .loginfield span {
+    font-size: 250%; }
+  .navContainer input#userinput, .navContainer .input-group-btn button {
+    font-size: 25px;
+    height: 45px; }
+  .navContainer .input-group-btn i {
+    font-size: 26px;
+    margin-top: 1px; } }
+
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  .loginIcons {
+    font-size: 19px; } }
+
 /* Portrait */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .navContainer {
@@ -20,6 +49,8 @@
     font-size: 80%; }
   #mytitle, #logoimage {
     display: none; }
+  .myContextMenu {
+    box-shadow: 0px 0px 0px #000; }
   .centerContainer {
     height: 80%; }
     .centerContainer .centerFlexContainer {
@@ -43,13 +74,15 @@
       .centerContainer .centerFlexContainer .textContainer.rightContainerFull {
         width: 100%;
         -webkit-transition: width 0.2s;
-        transition: width 0.2s; } }
+        transition: width 0.2s; }
+  .iconCorrection {
+    margin-left: .15em; } }
 
 /* Landscape */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
   .navContainer {
     padding: 1px;
-    height: 30%;
+    height: 25%;
     box-shadow: 0px 2px 2px #888888; }
   .mainContainer {
     padding: 0px 0px 0px 0px; }
@@ -57,8 +90,46 @@
     margin: 0px;
     height: 23%; }
   .navList {
-    font-size: 80%; } }
+    font-size: 80%; }
+  #mytitle, logoimage {
+    display: inline; } }
 
+/* ----------- iPhone 6 ----------- */
+/* Portrait and Landscape */
+/* Portrait */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  #logoimage {
+    display: inline; }
+  .filler {
+    -webkit-box-flex: 0.1;
+    -webkit-flex-grow: 0.1;
+        -ms-flex-positive: 0.1;
+            flex-grow: 0.1; }
+  .navContainer {
+    height: 15%;
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1; }
+  .loadingBarContainer1 {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2; }
+  .centerContainer {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3; }
+  .centerContainer .centerFlexContainer .textContainer .iconContainer {
+    margin: 0px;
+    height: 10%; }
+  .iconCorrection {
+    margin-left: 0.26em; }
+  .statusWindow {
+    display: none; } }
+
+/* Landscape */
 /*
 @media (max-width:$breakpoint-tablet)
 {

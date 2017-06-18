@@ -191,6 +191,7 @@
         var lib = {};
         var thedata = [];
         var thebuffer = [];
+        var modal;
         return {
             testServer: testServer,
             findSynonyms: findSynonyms,
@@ -204,10 +205,12 @@
             clearData: clearData,
             dataLength: dataLength,
             getModalTexts: getModalTexts,
-            getCmShowing:getCmShowing,
-            setCmShowing:setCmShowing,
             getItems:getItems
         };
+
+
+
+
 
         function getItems()
         {

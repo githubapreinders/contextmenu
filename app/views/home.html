@@ -5,7 +5,7 @@
         <div class="navContainer_child">
             <div class="filler"></div>
             <div class="navContainer_grandchild1">
-                <img id="logoimage" src="./media/logo_synomus4_bol.svg" style="height:25px;cursor:move" ng-click="vm.toggleFullScreen()"/>
+                <img  id="logoimage"  src="./media/logo_synomus4_bol.svg" />
                 <h5 id="mytitle" class="navHeading"><a href="https://www.synomus.nl">{{vm.title}}</a></h5>
                 <div class="filler"></div>
                 <nav class="navList">
@@ -109,7 +109,7 @@
             <div id = "myEditorwindow" class="textWindow editorWindow">
             <div id="editorWindow">
                 <span ng-repeat="(key,item) in vm.wordModel track by $index">
-                    <editor-text class="wordModelContainer" ></editor-text>
+                    <editor-text  class="wordModelContainer" ></editor-text>
                 </span>
             </div>
             </div>

@@ -4,33 +4,16 @@
 
     angular.module('contextmenu')
 //directive to prevent multiple context menus showing
-               .directive('contextMenuListener', function (MongoService)
+               .directive('contextMenuListener', function ($modal)
         {
             return {
                 restrict: "A",
                 link: function (scope, element, attrs)
                 {
                     //hide a contextmenu when it loses focus
-                    $('body').on('click', function (event)
-                    {
-                        if(MongoService.getCmShowing() > -1)
-                        {
-                           // console.log('clicked on:',event.target.id);
-                            if(event.target.id.match(/myWord/) !== null)
-                            {
-                            }
-                            else if( event.target.id.match(/contextMenu/) !== null)
-                            {
-                            }
-                            else
-                            {
-                            var element = document.getElementById('contextMenu' + MongoService.getCmShowing());
-                            element.style.visibility = "hidden";
-                            MongoService.setCmShowing(-1);
-                            }
-                            
-                        }
-                    });
+                  
+                   
+
                     $('editor-text').on('dblclick', function(event)
                     {
                         console.log('doubleclicked an editor text...');
@@ -42,114 +25,114 @@
         
 
 
-        .directive('editorText', function (MongoService)
+        .directive('editorText', function (MongoService, $modalStack)
         {
             return {
                 restrict: 'E',
                 templateUrl: 'views/wordItem.html',
                 link: function (scope, ele, attrs)
                 {
-                  var CMWIDTH = 250;
-                  var CMHEIGHT = 300; 
-                        
-                        ele.bind('dblclick', function(event)
-                       {
-                            var element0 = document.getElementById('contextMenu'+MongoService.getCmShowing());
-                            element0.style.visibility='hidden';
-                            var element1 = document.getElementById('myWord' + scope.$index);
-                            element1.setAttribute('contenteditable',true);
-                            element1.focus();
-                            element1.addEventListener('blur',function(event)
-                            {
-                                console.log('blurred...');
-                                element1.setAttribute('contenteditable',false);
-                            });
-                       });
-
-
+                    /*
+                       we bind the click here to clean up other modals if they are around;
+                       the alternative would be to remove this code and directly invoke
+                       vm.openModal({{$index}}) from the html;
+                    */
                        ele.bind('click',function(event)
                        {
-                        //remove contentEditable attribute if nec
+                          console.log("editorText click");
+                          var itemnumber = event.target.id.match(/\d+$/)[0];
+                          console.log("itemnumber",itemnumber);
+                          try
+                          {
+                            $modalStack.dismissAll();
+                          }catch(err)
+                          {
+                                console.log("not necessary", err);
+                          }
+                       finally
+                       {
+                            scope.vm.openModal(itemnumber);
+                       }
+                       });
+                }
 
-                        //if there is already a context menu showing
-                        if(MongoService.getCmShowing() !== -1)
-                        {
-                            var element2 = document.getElementById('contextMenu'+MongoService.getCmShowing());
-                            element2.style.visibility='hidden';
-                        }
+            };
+        })
 
-                       var element4 = document.getElementById('myWord' + scope.$index);
+         .directive('conMenu',function($modalStack)
+        {
+            return{
+                restrict:"E",
+                templateUrl: 'views/contextMenu.html',
+                link: function (scope, element, attrs)
+                {
+                    //the dimensions of the modal window that pops up.
+                    var CMWIDTH = 250;
+                    var CMHEIGHT = 300; 
 
-                       var currentHeight = element4.offsetHeight;
-                       var currentPosLeft = element4.offsetLeft;
-                       var itemwidth = CMWIDTH;
-                       var midword = currentPosLeft + element4.offsetWidth/2;
                        
+                    /*
+                    The following calculations will figure out the optimal position of the modal window; a small
+                    pointer will point at the word under consideration, the modal itself must be below or above
+                    the word while making sure it is within the boundaries of the screen.
+                    */   
+                       var myword = document.getElementById('myWord' + scope.vm2.itemnumber);
+                       var currentHeight = myword.offsetHeight;
+                       var currentPosLeft = myword.offsetLeft;
+                       var itemwidth = CMWIDTH;
+                       var midword = currentPosLeft + myword.offsetWidth/2;
                        var posleft;
                        var postop;
                        var scrollfromtop = document.getElementById('myEditorwindow').scrollTop;
-                       var pointer = document.getElementById('contextMenuBefore'+scope.$index);
-                       var pointer2 = document.getElementById('contextMenuAfter'+scope.$index);
-
-                       console.log("spaceright,spaceleft,spacebelos",hasSpaceOnRightSide(element4),hasSpaceOnLeftSide(element4),hasSpaceBelow(element4));
-
-                       if (hasSpaceOnRightSide(element4) && hasSpaceBelow(element4))
+                       var pointer={display : "inline;",left:'0px;'};
+                       var pointer2={display : "inline;",left:'0px;',top:"0px;"};
+                       var modal ={left:"0px",top:"0px;"};
+                       if (hasSpaceOnRightSide(myword) && hasSpaceBelow(myword))
                             {
-                                console.log("1a");
                                 posleft = currentPosLeft;
-                                postop = element4.offsetTop -scrollfromtop + currentHeight -2;
-                                pointer.style.left = element4.offsetWidth/2 -5 + 'px';
-                                pointer2.style.display = "none";
+                                postop = myword.offsetTop -scrollfromtop + currentHeight -2;
+                                pointer.left = myword.offsetWidth/2 -10 + 'px';
+                                pointer2.display = "none";
                             }
-                        if (!hasSpaceOnRightSide(element4)&&hasSpaceOnLeftSide(element4) && hasSpaceBelow(element4))
+                        if (!hasSpaceOnRightSide(myword)&&hasSpaceOnLeftSide(myword) && hasSpaceBelow(myword))
                             {
-                                console.log("2a");
-                                posleft = currentPosLeft + element4.offsetWidth - CMWIDTH;
-                                postop = element4.offsetTop -scrollfromtop + currentHeight -2;
-                                pointer.style.left = CMWIDTH - element4.offsetWidth/2 -5 + 'px';
-                                pointer2.style.display = "none";
+                                posleft = currentPosLeft + myword.offsetWidth - CMWIDTH;
+                                postop = myword.offsetTop -scrollfromtop + currentHeight -2;
+                                pointer.left = CMWIDTH - myword.offsetWidth/2 -10 + 'px';
+                                pointer2.display = "none";
                             }   
-                        if (!hasSpaceOnRightSide(element4)&&!hasSpaceOnLeftSide(element4) && hasSpaceBelow(element4))
+                        if (!hasSpaceOnRightSide(myword)&&!hasSpaceOnLeftSide(myword) && hasSpaceBelow(myword))
                             {
-                                console.log("3a");
                                 posleft = (window.innerWidth - CMWIDTH)/2;
-                                postop = element4.offsetTop -scrollfromtop + currentHeight -2;
-                                pointer.style.left = midword - (window.innerWidth - CMWIDTH)/2 + 'px';
-                                pointer2.style.display = "none";
+                                postop = myword.offsetTop -scrollfromtop + currentHeight -2;
+                                pointer.left = midword - (window.innerWidth - CMWIDTH)/2 -10 + 'px';
+                                pointer2.display = "none";
                             }       
-                        
-
-
-
-                        if (hasSpaceOnRightSide(element4) && !hasSpaceBelow(element4))
-                            {
-                                console.log("1");
-                                posleft = currentPosLeft;
-                                postop = element4.offsetTop - scrollfromtop - CMHEIGHT;
-                                pointer2.style.left = element4.offsetWidth/2 -5 + 'px';
-                                pointer2.style.top = CMHEIGHT-5;
-                                pointer.style.display = "none";
-                            }
-                        if (!hasSpaceOnRightSide(element4)&&hasSpaceOnLeftSide(element4) && !hasSpaceBelow(element4))
-                            {
-                                console.log("2");
-                                posleft = currentPosLeft + element4.offsetWidth - CMWIDTH;
-                                postop = element4.offsetTop - scrollfromtop - CMHEIGHT;
-                                pointer2.style.left = (element4.offsetLeft + element4.offsetWidth/2) - posleft + 'px';
-                                pointer2.style.top = CMHEIGHT-5;
-                                pointer.style.display = "none";
-                            }    
-                        if (!hasSpaceOnRightSide(element4)&&!hasSpaceOnLeftSide(element4) && !hasSpaceBelow(element4))
+                       if (hasSpaceOnRightSide(myword) && !hasSpaceBelow(myword))
+                           {
+                               posleft = currentPosLeft;
+                               postop = myword.offsetTop - scrollfromtop - CMHEIGHT;
+                                pointer2.left = myword.offsetWidth/2 -5 + 'px';
+                                pointer2.top = CMHEIGHT-10;
+                                pointer.display = "none";
+                           }
+                        if (!hasSpaceOnRightSide(myword)&&hasSpaceOnLeftSide(myword) && !hasSpaceBelow(myword))
+                           {
+                               posleft = currentPosLeft + myword.offsetWidth - CMWIDTH;
+                               postop = myword.offsetTop - scrollfromtop - CMHEIGHT;
+                                pointer2.left = (myword.offsetLeft + myword.offsetWidth/2) - posleft + 'px';
+                                pointer2.top = CMHEIGHT-10;
+                                pointer.display = "none";
+                           }    
+                        if (!hasSpaceOnRightSide(myword)&&!hasSpaceOnLeftSide(myword) && !hasSpaceBelow(myword))
                         {
-                                console.log("3");
                                 posleft = (window.innerWidth - CMWIDTH)/2;
-                                postop = element4.offsetTop - scrollfromtop - CMHEIGHT;
-                                pointer2.style.top = CMHEIGHT-5;
-                                pointer2.style.left = midword - (window.innerWidth - CMWIDTH)/2 + 'px';
-                                pointer.style.display = "none";
+                                postop = myword.offsetTop - scrollfromtop - CMHEIGHT;
+                                pointer2.top = CMHEIGHT-10;
+                                pointer2.left = midword - (window.innerWidth - CMWIDTH)/2 + 'px';
+                                pointer.display = "none";
                         }
 
-                        //calculating for a window 100px width and 300px high
                         function hasSpaceOnRightSide(elem)
                         {
                             return window.innerWidth - elem.offsetLeft > CMWIDTH;
@@ -165,36 +148,23 @@
                             return screen.height - elem.offsetTop  - elem.offsetHeight > CMHEIGHT;
                         }
 
-                    
-
-
+                        var stylestring = "display:" + pointer.display + ";left:"+ pointer.left; 
+                        $("<style/>",{text:'.myContextMenuBefore{'+ stylestring +'} '}).appendTo('head');
+                        var stylestring2 = "display:" + pointer2.display + ";left:"+ pointer2.left + ";top:" + pointer2.top + 'px;'; 
+                        $("<style/>",{text:'.myContextMenuAfter{'+ stylestring2 +'} '}).appendTo('head');
+                        var stylestring3 = "left:" + posleft + "px;top:" + postop +'px;'; 
+                        $("<style/>",{text:'.mymodal{'+ stylestring3 +'} '}).appendTo('head');
+                        $("<style/>",{text:'.modal-dialog{'+ stylestring3 +'} '}).appendTo('head');
                         
-                        var menu = document.getElementById('contextMenu'+scope.$index);
-                        menu.style.left =posleft+'px';
-                        menu.style.top =postop+'px';
-                        menu.style.width = CMWIDTH + 'px';
-                        menu.style.height = CMHEIGHT+ 'px';
-                        menu.style.visibility = "visible";
-                        menu.style.opacity = 1;
-                        // console.log(element.offsetLeft,element.offsetWidth,midword);
-                        
-                        MongoService.setCmShowing(scope.$index);
-                       });
-                }
-
-            };
-        })
-
-         .directive('conMenu',function()
-        {
-            return{
-                restrict:"E",
-                templateUrl: 'views/contextMenu.html',
-                link: function (scope, element, attrs)
-                {
-                    element.bind('click', function(event)
+                         $('body').on('click', function (event)
                     {
-                        
+                            if( event.target.id.match(/contextMenu/) === null)
+                            {
+                                if( document.getElementById('contextMenu') !== null && event.target.id.match(/myWord/) === null)
+                                {
+                                    $modalStack.dismissAll();
+                                }
+                            }
                     });
                 }
             };

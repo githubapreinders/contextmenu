@@ -1,29 +1,44 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Droid+Sans|Muli|Dosis|Exo+2|Cuprum|Play|Audiowide");
+.mymodal .modal-dialog {
+  top: 0px;
+  position: absolute;
+  left: 0px;
+  width: 250px;
+  height: 300px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-right: 0px; }
+
+.modal-backdrop {
+  display: none; }
+
+.modal-content {
+  border: 0px; }
+
 .myContextMenuBefore {
   position: absolute;
   left: 55px;
-  top: -5px;
+  top: -8px;
   width: 10px;
   height: 10px;
-  border-color: blue;
+  border-color: #6b4747;
   border-style: solid;
-  border-width: 1px 0px 0px 1px;
-  background: -webkit-linear-gradient(45deg, #E9F0F2, #E4F1F5);
-  background: linear-gradient(45deg, #E9F0F2, #E4F1F5);
+  border-width: 3px 0px 0px 3px;
+  background: url("../media/cheap_diagonal_fabric_mirrored.png");
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg); }
 
 .myContextMenuAfter {
   position: absolute;
   left: 55px;
-  top: 294px;
+  top: 292px;
   width: 10px;
   height: 10px;
-  border-color: blue;
+  border-color: #6b4747;
   border-style: solid;
-  border-width: 1px 0px 0px 1px;
-  background: -webkit-linear-gradient(45deg, #E9F0F2, #E4F1F5);
-  background: linear-gradient(45deg, #E9F0F2, #E4F1F5);
+  border-width: 3px 0px 0px 3px;
+  background: url("../media/cheap_diagonal_fabric_mirrored.png");
   -webkit-transform: rotate(225deg);
           transform: rotate(225deg); }
 
@@ -32,14 +47,47 @@
   z-index: 10000;
   color: black;
   font-size: 20px;
-  border: 1px solid blue;
-  background: -webkit-linear-gradient(45deg, #E9F0F2, #E4F1F5);
-  background: linear-gradient(45deg, #E9F0F2, #E4F1F5);
-  border-radius: 4px;
+  border: 4px solid #6b4747;
+  background: url("../media/cheap_diagonal_fabric_mirrored.png");
+  box-shadow: 5px 5px 5px #888888;
+  border-radius: 6px;
   height: 300px;
+  width: 250px;
   padding-bottom: 0px;
   -webkit-transition: visibility 0.1s, opacity 0.3s;
   transition: visibility 0.1s, opacity 0.3s; }
+  .myContextMenu #edit_button {
+    font-size: 25px;
+    position: absolute;
+    left: 220px;
+    z-index: 2000;
+    top: 5px;
+    color: #FCFCFC; }
+    .myContextMenu #edit_button :hover {
+      color: #996666;
+      -webkit-transform: scale(1.09);
+              transform: scale(1.09);
+      cursor: default; }
+    .myContextMenu #edit_button :active {
+      cursor: default;
+      color: #ccb3b3; }
+    .myContextMenu #edit_button .fa-pencil {
+      color: #6b4747; }
+    .myContextMenu #edit_button .fa-square-o {
+      top: 2px;
+      -webkit-transform: scale(1.09);
+              transform: scale(1.09);
+      color: #6b4747;
+      padding: 0px;
+      margin: 0px; }
+  .myContextMenu ul {
+    list-style: none;
+    margin: 2px;
+    padding: 0px; }
+  .myContextMenu li {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    list-style: none;
+    margin: 2px; }
   .myContextMenu .contextMenuContentArea {
     overflow: auto;
     height: 198px;
@@ -50,23 +98,19 @@
       background: url("../media/cork-wallet_blue.png"); }
   .myContextMenu .contextMenuMenuArea {
     overflow: auto;
-    height: 98px;
+    height: 90px;
     padding: 3px; }
     .myContextMenu .contextMenuMenuArea li {
       background: url("../media/cork-wallet_grey.png"); }
+      .myContextMenu .contextMenuMenuArea li .menuselected {
+        border: 1px solid red; }
     .myContextMenu .contextMenuMenuArea :hover {
       background: url("../media/cork-wallet_grey_lighter.png"); }
-  .myContextMenu ul {
-    list-style: none;
-    margin: 2px;
-    padding: 0px;
-    background: lightgrey;
-    font-family: sans-serif; }
-    .myContextMenu ul li {
-      list-style: none;
-      margin: 2px;
-      padding: 0.5em 0.5em 0.5em 0.5em;
+    .myContextMenu .contextMenuMenuArea ul {
+      background: lightgrey;
       font-family: sans-serif; }
+      .myContextMenu .contextMenuMenuArea ul li {
+        font-family: sans-serif; }
 
 html {
   height: 100%; }
@@ -94,7 +138,7 @@ body {
 .navContainer {
   width: 100%;
   height: 15%;
-  z-index: 9999;
+  z-index: 1000;
   background: url("../media/cork-wallet_grey.png");
   color: black;
   padding: 0px 10px 0px 10px;
@@ -412,5 +456,5 @@ body {
 .iconCorrection2 {
   color: red; }
 
-.mymodal {
-  top: 200px; }
+#logoimage {
+  height: 25px; }

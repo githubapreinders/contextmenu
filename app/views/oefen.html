@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<div id = "contextMenu{{vm2.itemnumber}}"  class="modal-content myContextMenu">
+<div id = "contextMenuBefore{{vm2.itemnumber}}" class="myContextMenuBefore"></div>  
+    <div  id ="mymymodal{{vm2.itemnumber}}" class="modal-body contextMenuContentArea">
+
+    <h3>{{vm2.theword.currentword}}</h3>
+        <ul>
+            <li id=contextMenuContentSyn{{vm2.itemnumber}} ng-show = "vm2.contentItems['synonyms'] == true;" ng-repeat="synonym in vm2.theword.synonyms track by $index" >
+                    <span id="contextMenuSynonyms{{vm2.itemnumber}}" ng-click="vm2.showSynonym(vm2.itemnumber,$parent.vm2.itemnumber)">{{synonym}}</span>
+            </li>
+            <li id=contextMenuContentRhy{{vm2.itemnumber}} ng-show = "vm2.contentItems['rhymewords'] == true;" ng-repeat="rhymeword in vm2.theword.rhymewords " >
+                    <span id="contextMenuRhymewords{{vm2.itemnumber}}" ng-click="vm2.showRhymeWord(vm2.itemnumber,$parent.vm2.itemnumber)">{{rhymeword}}</span>
+                </li>
+            <li id=contextMenuContentDes{{vm2.itemnumber}} ng-show = "vm2.contentItems['description'] == true;" ng-repeat="description in vm2.theword.description ">  <span id="contextMenuDescription{{vm2.itemnumber}}" ng-click="vm2.showDescription(vm2.itemnumber,$parent.vm2.itemnumber)">{{description}}</span></li>        
+        </ul>
+    </div>
+    <div id="contextMenuMenuArea{{vm.itemnumber}}" class=" contextMenuMenuArea">
+        <ul>
+            <li id=contextMenuMenuSyn{{vm.itemnumber}} ng-show = "vm2.contentItems['synonyms']== false;" ng-click="vm2.showCmContent('synonyms', vm2.itemnumber)">Synonyms</li>
+            <li id=contextMenuMenuRhy{{vm2.itemnumber}} ng-show = "vm2.contentItems['rhymewords']== false;" ng-click="vm2.showCmContent('rhymewords', vm2.itemnumber)">Rhymewords</li>
+            <li id=contextMenuMenuDes{{vm2.itemnumber}} ng-show = "vm2.contentItems['description']== false;" ng-click="vm2.showCmContent('description', vm2.itemnumber)">Description</li>
+            <li id=contextMenuMenuOri{{vm2.itemnumber}} ng-click="vm2.showCmContent('restore', vm2.itemnumber)">{{item.originalword}}</li>
+        </ul>
+    </div>
+    <div id = "contextMenuAfter{{vm.itemnumber}}" class="myContextMenuAfter"></div>
+</div>

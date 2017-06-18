@@ -1,24 +1,29 @@
 <!DOCTYPE html>
-<div id = "contextMenu{{$index}}"  class="myContextMenu">
-<div id = "contextMenuBefore{{$index}}" class="myContextMenuBefore"></div>	
-	<div id="contextMenuContentArea{{$index}}" class=" contextMenuContentArea">
+<div id = "contextMenu"  class="myContextMenu">
+<div id = "contextMenuBefore" class="myContextMenuBefore"></div>
+<span id="edit_button"   class="fa-stack fa-lg" ng-click="vm2.editWord()">
+                    <i class="fa fa-square fa-stack-2x "></i>
+                    <i class="fa fa-square-o fa-stack-2x "></i>
+                    <i class="fa fa-pencil fa-stack-1x "></i>
+                </span> 	
+	<div id="contextMenuContentArea" class=" contextMenuContentArea">
         <ul>
-            <li id=contextMenuContentSyn{{$index}} ng-show = "vm.contentItems['synonyms'] == true;" ng-repeat="synonym in item.synonyms track by $index" >
-                    <span id="contextMenuSynonyms{{$index}}" ng-click="vm.showSynonym($index,$parent.$index)">{{synonym}}</span>
+            <li id=contextMenuContentSyn ng-show = "vm2.showSynonyms" ng-repeat="synonym in vm2.theword.synonyms track by $index" >
+                    <span id="contextMenuSynonyms" ng-click="vm.showSynonym($index,$parent.$index)">{{synonym}}</span>
             </li>
-            <li id=contextMenuContentRhy{{$index}} ng-show = "vm.contentItems['rhymewords'] == true;" ng-repeat="rhymeword in vm.wordModel[$index].rhymewords track by $index" >
-                    <span id="contextMenuRhymewords{{$index}}" ng-click="vm.showRhymeWord($index,$parent.$index)">{{rhymeword}}</span>
+            <li id=contextMenuContentRhy ng-show = "vm2.showRhyme;" ng-repeat="rhymeword in vm2.theword.rhymewords track by $index" >
+                    <span id="contextMenuRhymewords" ng-click="vm.showRhymeWord($index,$parent.$index)">{{rhymeword}}</span>
                 </li>
-            <li id=contextMenuContentDes{{$index}} ng-show = "vm.contentItems['description'] == true;" ng-repeat="description in vm.wordModel[$index].description track by $index">  <span id="contextMenuDescription{{$index}}" ng-click="vm.showDescription($index,$parent.$index)">{{description}}</span></li>        
+            <li id=contextMenuContentDes ng-show = "vm2.showDescription" ng-repeat="description in vm2.theword.description track by $index">  <span id="contextMenuDescription" ng-click="vm.showDescription($index,$parent.$index)">{{description}}</span></li>        
         </ul>
     </div>
-    <div id="contextMenuMenuArea{{$index}}" class=" contextMenuMenuArea">
+    <div id="contextMenuMenuArea" class=" contextMenuMenuArea">
         <ul>
-            <li id=contextMenuMenuSyn{{$index}} ng-show = "vm.contentItems['synonyms']== false;" ng-click="vm.showCmContent('synonyms', $index)">Synodnyms</li>
-            <li id=contextMenuMenuRhy{{$index}} ng-show = "vm.contentItems['rhymewords']== false;" ng-click="vm.showCmContent('rhymewords', $index)">Rhymewords</li>
-            <li id=contextMenuMenuDes{{$index}} ng-show = "vm.contentItems['description']== false;" ng-click="vm.showCmContent('description', $index)">Description</li>
-            <li id=contextMenuMenuOri{{$index}} ng-click="vm.showCmContent('restore', $index)">{{item.originalword}}</li>
+            <li id="contextMenuMenuSyn" ng-click="vm2.showSynonyms = true; vm2.showRhyme = false; vm2.showDescription = false;vm2.showCmContent('contextMenuMenuSyn', $index)">Synodnyms</li>
+            <li id="contextMenuMenuRhy"  ng-click="vm2.showSynonyms = false; vm2.showRhyme = true; vm2.showDescription = false;;vm2.showCmContent('contextMenuMenuRhy', $index)">Rhymewords</li>
+            <li id=contextMenuMenuDes  ng-click="vm2.showSynonyms = false; vm2.showRhyme = false; vm2.showDescription = true;vm2.showCmContent('contextMenuMenuDes', $index)">Description</li>
+            <li id=contextMenuMenuOri ng-click=";vm2.showCmContent('restore', $index)">{{vm2.theword.originalword}}</li>
         </ul>
     </div>
-    <div id = "contextMenuAfter{{$index}}" class="myContextMenuAfter"></div>
+    <div id = "contextMenuAfter" class="myContextMenuAfter"></div>
 </div>

@@ -21,6 +21,55 @@ $buttoncolor: green;
 $corkColor1:#666666;
 $corkColor2:#996666;
 
+/* ----------- Laptop Non-Retina Screens ----------- */
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) 
+  {
+  
+  .iconContainer
+  {
+    span {font-size:350%;}
+    h6{margin-top:30px;}
+  }
+  .centerContainer .centerFlexContainer .textContainer h6 {font-size:25px;}
+  .wordModel, .wordModel_underlined{font-size:30px;}
+
+  .navContainer
+  {
+      #logoimage
+      {
+        height:65px;
+      }
+    
+    .loginfield 
+    {
+      input
+      {
+        height:45px;width:300px;font-size:25px;
+      }
+      span 
+      {
+        font-size:250%;
+      }
+    }
+    input#userinput, .input-group-btn button  
+    { 
+      font-size:25px;
+      height:45px;
+    }    
+    .input-group-btn i 
+    {
+      font-size:26px;
+      margin-top:1px;
+    }
+
+  
+  }
+}
+
+
 
 /* ----------- iPhone 5 and 5S ----------- */
 
@@ -29,6 +78,11 @@ $corkColor2:#996666;
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
+
+  .loginIcons
+  {
+    font-size:19px;
+  }
 
 }
 
@@ -49,6 +103,7 @@ $corkColor2:#996666;
         padding:0px;
       }
   }
+
   .statusWindow{display:none;}
   .mainContainer{padding:0px 0px 0px 0px;}
   .centerContainer .centerFlexContainer .textContainer .iconContainer {margin:0px;height:13%;}
@@ -60,6 +115,13 @@ $corkColor2:#996666;
   {
     display:none;
   }
+  .myContextMenu
+  {
+    box-shadow: 0px 0px 0px #000; 
+  }
+
+
+
 
    .centerContainer
   {
@@ -97,6 +159,11 @@ $corkColor2:#996666;
     }
    }
   }
+.iconCorrection
+{
+  margin-left:.15em;
+}
+
 }
 
 /* Landscape */
@@ -109,7 +176,7 @@ $corkColor2:#996666;
   .navContainer
   {
     padding:1px;
-    height:30%;
+    height:25%;
     box-shadow: 0px 2px 2px #888888;
   }
    .mainContainer{padding:0px 0px 0px 0px;}
@@ -118,6 +185,70 @@ $corkColor2:#996666;
   {
     font-size:80%;
   }
+  #mytitle,logoimage
+  {
+    display:inline;
+  }
+
+}
+
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) 
+  { 
+
+}
+
+/* Portrait */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) 
+  { 
+    #logoimage
+    {
+      display:inline;
+    }
+    
+   .filler
+   {
+    flex-grow:0.1;
+   }
+
+   .navContainer
+   {
+    height:15%;
+    order:1
+   }
+   .loadingBarContainer1
+   {
+    order:2;
+   }
+   .centerContainer
+   {
+    order:3;
+   }
+   .centerContainer .centerFlexContainer .textContainer .iconContainer {margin:0px;height:10%;}
+
+   .iconCorrection
+   {
+    margin-left:0.26em;
+   }
+  .statusWindow{display:none;}
+  }
+
+/* Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) { 
 
 }
 
