@@ -53,9 +53,7 @@
   border-radius: 6px;
   height: 300px;
   width: 250px;
-  padding-bottom: 0px;
-  -webkit-transition: visibility 0.1s, opacity 0.3s;
-  transition: visibility 0.1s, opacity 0.3s; }
+  padding-bottom: 0px; }
   .myContextMenu #edit_button {
     font-size: 25px;
     position: absolute;
@@ -99,18 +97,23 @@
   .myContextMenu .contextMenuMenuArea {
     overflow: auto;
     height: 90px;
-    padding: 3px; }
+    padding: 2px; }
+    .myContextMenu .contextMenuMenuArea .menuselected {
+      color: white; }
+    .myContextMenu .contextMenuMenuArea i {
+      width: 15%;
+      padding-right: 10px;
+      color: #6b4747; }
     .myContextMenu .contextMenuMenuArea li {
+      margin: 0px;
+      text-transform: uppercase;
+      font-family: sans-serif;
       background: url("../media/cork-wallet_grey.png"); }
-      .myContextMenu .contextMenuMenuArea li .menuselected {
-        border: 1px solid red; }
     .myContextMenu .contextMenuMenuArea :hover {
-      background: url("../media/cork-wallet_grey_lighter.png"); }
-    .myContextMenu .contextMenuMenuArea ul {
-      background: lightgrey;
-      font-family: sans-serif; }
-      .myContextMenu .contextMenuMenuArea ul li {
-        font-family: sans-serif; }
+      background: url("../media/cork_wallet_grey_lighter1.png"); }
+  .myContextMenu ul {
+    background: lightgrey;
+    font-family: sans-serif; }
 
 html {
   height: 100%; }
@@ -394,8 +397,7 @@ body {
 
 .wordModel {
   font-size: 20px;
-  display: inline;
-  white-space: pre; }
+  display: inline; }
 
 .originalWord_underlined {
   border-bottom: 2px solid green;
@@ -406,7 +408,6 @@ body {
   box-sizing: content-box;
   border-bottom: 2px dotted blue;
   font-size: 20px;
-  white-space: pre;
   cursor: pointer; }
 
 .wordModel_suffix {

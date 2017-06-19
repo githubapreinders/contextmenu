@@ -87,7 +87,6 @@ $patterncolor6: #000020;
   height:300px;
   width:250px;
   padding-bottom:0px ;
-  transition:  visibility 0.1s, opacity 0.3s;
   #edit_button
   {
     font-size:25px;
@@ -154,30 +153,36 @@ $patterncolor6: #000020;
   {
       overflow:auto;
       height:90px;
-      padding:3px;
-      li
-      {
-          .menuselected
+      padding:2px;
+    .menuselected
           {
-            border:1px solid red;
+            color:white;
           }
-       background:url('../media/cork-wallet_grey.png');
-      }
+
+    i
+    {
+      width:15%;
+     padding-right:10px;
+     color:darken($corkColor2,15%);
+    }
+    li
+    {
+    margin:0px;
+     text-transform:uppercase;
+     font-family: sans-serif;
+     background:url('../media/cork-wallet_grey.png');
+     }
       :hover
       {
-          background:url('../media/cork-wallet_grey_lighter.png');
+        background:url('../media/cork_wallet_grey_lighter1.png');
       }
-      ul
-      {
-        background: lightgrey;
-        font-family: sans-serif;
-      li
-      {
-        
-        font-family: sans-serif;
-      }
+     
     }
-  }
+    ul
+    {
+      background: lightgrey;
+      font-family: sans-serif;
+    }
 
 }
 
@@ -518,7 +523,6 @@ border-radius: 3px;
 .wordModel {
 font-size:20px;
 display:inline;
-white-space:pre;
 }
 
 .originalWord_underlined {
@@ -531,7 +535,6 @@ white-space:pre;
   box-sizing: content-box;
   border-bottom: 2px dotted blue;
   font-size:20px;
-  white-space:pre;
   cursor: pointer;
 
 }

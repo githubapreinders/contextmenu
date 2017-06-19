@@ -19,10 +19,10 @@
     </div>
     <div id="contextMenuMenuArea" class=" contextMenuMenuArea">
         <ul>
-            <li id="contextMenuMenuSyn" ng-click="vm2.showSynonyms = true; vm2.showRhyme = false; vm2.showDescription = false;vm2.showCmContent('contextMenuMenuSyn', $index)">Synodnyms</li>
-            <li id="contextMenuMenuRhy"  ng-click="vm2.showSynonyms = false; vm2.showRhyme = true; vm2.showDescription = false;;vm2.showCmContent('contextMenuMenuRhy', $index)">Rhymewords</li>
-            <li id=contextMenuMenuDes  ng-click="vm2.showSynonyms = false; vm2.showRhyme = false; vm2.showDescription = true;vm2.showCmContent('contextMenuMenuDes', $index)">Description</li>
-            <li id=contextMenuMenuOri ng-click=";vm2.showCmContent('restore', $index)">{{vm2.theword.originalword}}</li>
+            <li id="contextMenuMenuSyn" ng-click="vm2.showSynonyms = true; vm2.showRhyme = false; vm2.showDescription = false;vm2.showCmContent('contextMenuMenuSyn', $index)" class="menuselected"><span><i class="fa fa-umbrella"></i></span> synoniemen</li>
+            <li id="contextMenuMenuRhy"  ng-click="vm2.showSynonyms = false; vm2.showRhyme = true; vm2.showDescription = false;;vm2.showCmContent('contextMenuMenuRhy', $index)"><span><i class="fa fa-bell"></i></span>rijmwoorden</li>
+            <li id=contextMenuMenuDes  ng-click="vm2.showSynonyms = false; vm2.showRhyme = false; vm2.showDescription = true;vm2.showCmContent('contextMenuMenuDes', $index)"><span><i class="fa fa-info"></i></span>beschrijving</li>
+            <li id=contextMenuMenuOri ng-click=";vm2.showCmContent('restore', $index)"><span><i class="fa fa-undo"></i></span>{{vm2.theword.originalword}}</li>
         </ul>
     </div>
     <div id = "contextMenuAfter" class="myContextMenuAfter"></div>

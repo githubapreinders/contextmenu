@@ -16,7 +16,7 @@
         vm2.editWord = editWord;
         vm2.theword = items[itemnumber];
         vm2.itemnumber = itemnumber;
-        vm2.contentItems = ['contextMenuMenuSyn', 'contextMenuMenuDes', 'contextMenuMenuOri'];
+        vm2.contentItems = ['contextMenuMenuSyn', 'contextMenuMenuDes', 'contextMenuMenuRhy'];
 
         //a click on the pencil icon in the modal in contextMenu.html;
         function editWord() 
